@@ -1,0 +1,27 @@
+Function CharactersOnly(range As range) As String
+    Dim regEx As New RegExp
+    Dim strPattern As String
+    Dim strRemove As String
+    
+    Dim strIn As String
+    
+    strPattern = "[^a-zA-Z]*"
+    strRemove = ""
+    
+    With regEx
+            .Global = True
+            .MultiLine = True
+            .IgnoreCase = False
+            .Pattern = strPattern
+    End With
+    
+    strIn = range.Value
+    
+    If strIn <> "" Then
+        If regEx.Test(strIn) Then
+            CharactersOnly = regEx.Replace(strIn, strRemove)
+        Else
+            CharactersOnly = strIn
+        End If
+    End If
+End Function
