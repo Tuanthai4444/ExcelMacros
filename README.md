@@ -1,3 +1,3 @@
 # ExcelMacros
 
-Macros for Excel
+Macros/Functions for Excel
