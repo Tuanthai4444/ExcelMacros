@@ -1,0 +1,27 @@
+Function RemoveSpecialChars(range As range) As String
+    Dim regEx As New RegExp
+    Dim strPattern As String
+    Dim strRemove As String
+    
+    Dim strIn As String
+    
+    strPattern = "[^a-zA-Z0-9]*"
+    strRemove = ""
+    
+    With regEx
+            .Global = True
+            .MultiLine = True
+            .IgnoreCase = False
+            .Pattern = strPattern
+    End With
+    
+    strIn = range.Value
+    
+    If strIn <> "" Then
+        If regEx.Test(strIn) Then
+            RemoveSpecialChars = regEx.Replace(strIn, strRemove)
+        Else
+            RemoveSpecialChars = strIn
+        End If
+    End If
+End Function
